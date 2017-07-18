@@ -3,10 +3,15 @@ defmodule JapaneseZenhan.Mixfile do
 
   def project do
     [app: :japanese_zenhan,
-     version: "0.9.9",
+     version: "1.0.0",
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     description: description(),
+     package: package(),
+     source_url: "https://github.com/hykw/japanese_zenhan",
+     homepage_url: "https://github.com/hykw/japanese_zenhan",
+
      deps: deps()]
   end
 
@@ -31,6 +36,22 @@ defmodule JapaneseZenhan.Mixfile do
     [
       {:credo, ">= 0.0.0", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.16.2", only: :dev, runtime: false},
+    ]
+  end
+
+  defp description do
+    """
+    Elixir Library for converting Japanese characters between Full-width(Zen) and Half-width(Han)
+
+    """
+  end
+
+  defp package do
+    [
+      files: ["lib", "mix.exs", "README.md"],
+      maintainers: ["Hitoshi Hayakawa"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/hykw/japanese_zenhan"}
     ]
   end
 end
