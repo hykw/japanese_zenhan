@@ -3,7 +3,7 @@ defmodule JapaneseZenhan.Mixfile do
 
   def project do
     [app: :japanese_zenhan,
-     version: "0.1.0",
+     version: "0.9.9",
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
@@ -30,6 +30,7 @@ defmodule JapaneseZenhan.Mixfile do
   defp deps do
     [
       {:credo, ">= 0.0.0", only: [:dev, :test], runtime: false},
+      {:ex_doc, "~> 0.16.2", only: :dev, runtime: false},
     ]
   end
 end
