@@ -18,6 +18,7 @@ defmodule JapaneseZenhanTest do
   defp get_concat_str(:digit) do
     @digit_zenkaku <> @digit_hankaku
   end
+
   defp get_concat_str(:alpha) do
     @alpha_hankaku_U <> @alpha_hankaku_L <> @alpha_zenkaku_U <> @alpha_zenkaku_L
   end
@@ -36,7 +37,11 @@ defmodule JapaneseZenhanTest do
     end
 
     test "digit + alpha" do
-      expects = @digit_hankaku <> @digit_hankaku <> @alpha_hankaku_U <> @alpha_hankaku_L <> @alpha_hankaku_U <> @alpha_hankaku_L
+      expects =
+        @digit_hankaku <>
+          @digit_hankaku <>
+          @alpha_hankaku_U <> @alpha_hankaku_L <> @alpha_hankaku_U <> @alpha_hankaku_L
+
       src = get_concat_str(:digit) <> get_concat_str(:alpha)
       assert expects == JapaneseZenhan.z2h(src)
     end
@@ -49,12 +54,14 @@ defmodule JapaneseZenhanTest do
     end
 
     test "only alpha" do
-      expects = get_concat_str(:digit) <> @alpha_hankaku_U <> @alpha_hankaku_L <> @alpha_hankaku_U <> @alpha_hankaku_L
+      expects =
+        get_concat_str(:digit) <>
+          @alpha_hankaku_U <> @alpha_hankaku_L <> @alpha_hankaku_U <> @alpha_hankaku_L
+
       src = get_concat_str(:digit) <> get_concat_str(:alpha)
       assert expects == JapaneseZenhan.z2h(src, [:alpha])
     end
   end
-
 
   describe "hankaku to zenkaku" do
     test "digit" do
@@ -70,7 +77,11 @@ defmodule JapaneseZenhanTest do
     end
 
     test "digit + alpha" do
-      expects = @digit_zenkaku <> @digit_zenkaku <> @alpha_zenkaku_U <> @alpha_zenkaku_L <> @alpha_zenkaku_U <> @alpha_zenkaku_L
+      expects =
+        @digit_zenkaku <>
+          @digit_zenkaku <>
+          @alpha_zenkaku_U <> @alpha_zenkaku_L <> @alpha_zenkaku_U <> @alpha_zenkaku_L
+
       src = get_concat_str(:digit) <> get_concat_str(:alpha)
       assert expects == JapaneseZenhan.h2z(src)
     end
@@ -83,7 +94,10 @@ defmodule JapaneseZenhanTest do
     end
 
     test "only alpha" do
-      expects = get_concat_str(:digit) <> @alpha_zenkaku_U <> @alpha_zenkaku_L <> @alpha_zenkaku_U <> @alpha_zenkaku_L
+      expects =
+        get_concat_str(:digit) <>
+          @alpha_zenkaku_U <> @alpha_zenkaku_L <> @alpha_zenkaku_U <> @alpha_zenkaku_L
+
       src = get_concat_str(:digit) <> get_concat_str(:alpha)
       assert expects == JapaneseZenhan.h2z(src, [:alpha])
     end

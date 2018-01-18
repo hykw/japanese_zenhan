@@ -2,17 +2,18 @@ defmodule JapaneseZenhan.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :japanese_zenhan,
-     version: "1.0.0",
-     elixir: "~> 1.4",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     description: description(),
-     package: package(),
-     source_url: "https://github.com/hykw/japanese_zenhan",
-     homepage_url: "https://github.com/hykw/japanese_zenhan",
-
-     deps: deps()]
+    [
+      app: :japanese_zenhan,
+      version: "1.0.1",
+      elixir: "~> 1.4",
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
+      description: description(),
+      package: package(),
+      source_url: "https://github.com/hykw/japanese_zenhan",
+      homepage_url: "https://github.com/hykw/japanese_zenhan",
+      deps: deps()
+    ]
   end
 
   # Configuration for the OTP application
@@ -35,7 +36,7 @@ defmodule JapaneseZenhan.Mixfile do
   defp deps do
     [
       {:credo, ">= 0.0.0", only: [:dev, :test], runtime: false},
-      {:ex_doc, "~> 0.16.2", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.16.2", only: :dev, runtime: false}
     ]
   end
 

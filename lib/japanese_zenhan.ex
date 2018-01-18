@@ -24,7 +24,6 @@ defmodule JapaneseZenhan do
 
   use JapaneseZenhan.Maps, :maps
 
-
   # zenkaku -> hankaku
   def z2h(str, opt \\ [:alpha, :digit]) when is_binary(str) do
     maps = get_map(:z2h, opt)
@@ -37,11 +36,10 @@ defmodule JapaneseZenhan do
     do_conv(str, maps)
   end
 
-
   defp do_conv(str, maps) do
     str
     |> String.split("")
-    |> Enum.map(fn(x) -> convert(maps, x) end)
+    |> Enum.map(fn x -> convert(maps, x) end)
     |> Enum.join("")
   end
 
@@ -52,12 +50,11 @@ defmodule JapaneseZenhan do
 
   defp get_map(which, opt) do
     opt
-    |> Enum.map(fn(key) -> get_map(which, key) end)
-    |> Enum.reduce(fn(x, acc) -> Map.merge(acc, x) end)
+    |> Enum.map(fn key -> get_map(which, key) end)
+    |> Enum.reduce(fn x, acc -> Map.merge(acc, x) end)
   end
 
   defp convert(chars_map, char) do
     Map.get(chars_map, char, char)
   end
-
 end

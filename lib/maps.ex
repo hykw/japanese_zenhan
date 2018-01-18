@@ -1,5 +1,4 @@
 defmodule JapaneseZenhan.Maps do
-
   defmacro __using__(which) when is_atom(which) do
     apply(__MODULE__, which, [])
   end
@@ -16,7 +15,7 @@ defmodule JapaneseZenhan.Maps do
         "６" => "6",
         "７" => "7",
         "８" => "8",
-        "９" => "9",
+        "９" => "9"
       }
 
       @map_alpha_z2h %{
@@ -71,26 +70,27 @@ defmodule JapaneseZenhan.Maps do
         "Ｗ" => "W",
         "Ｘ" => "X",
         "Ｙ" => "Y",
-        "Ｚ" => "Z",
+        "Ｚ" => "Z"
       }
-
 
       ### build hankaku -> zenkaku
       # digit
       map = @map_digit_z2h
       keys = Map.keys(map)
-      @map_digit_h2z Enum.reduce(map, %{}, fn(x, acc) ->
-        {key, value} = x
-        Map.put(acc, value, key)
-      end)
+
+      @map_digit_h2z Enum.reduce(map, %{}, fn x, acc ->
+                       {key, value} = x
+                       Map.put(acc, value, key)
+                     end)
 
       # alpha
       map = @map_alpha_z2h
       keys = Map.keys(map)
-      @map_alpha_h2z Enum.reduce(map, %{}, fn(x, acc) ->
-        {key, value} = x
-        Map.put(acc, value, key)
-      end)
+
+      @map_alpha_h2z Enum.reduce(map, %{}, fn x, acc ->
+                       {key, value} = x
+                       Map.put(acc, value, key)
+                     end)
     end
   end
 end
